@@ -1,0 +1,43 @@
+
+
+Name                      : AMD Ryzen 7 5800H with Radeon Graphics
+NumberOfCores             : 8
+NumberOfLogicalProcessors : 16
+L2CacheSize               : 4096
+L3CacheSize               : 16384
+L1DataCashe               :
+CasheLineSize             :
+
+Python 3.14.8
+
+P_phys=8  P_log=16  M=24000000
+
+Table 1A: stride sweep (p = P_phys)
+stride  bytes  median(ms)   IQR(ms)   Mops/s
+     1      8      2760.7     171.5     8.69
+     2     16      2930.1     419.2     8.19
+     4     32      2757.4     171.3     8.70
+     8     64      2774.5      90.1     8.65
+    16    128      2726.6     148.3     8.80
+    32    256      2717.7      53.1     8.83
+
+Largest drop: x1.06 at stride 4 -> 32 bytes separation
+
+Table 1B: scaling, stride=1 (8 B)
+  p     Tp(ms)      IQR      Sp     Ep  Karp-Flatt e
+  1     7462.2     53.4    1.00   1.00             -
+  2     4414.1     50.1    1.69   0.85        0.1830
+  4     2944.9     33.0    2.53   0.63        0.1928
+  8     2788.8    199.4    2.68   0.33        0.2843
+ 16     3659.8    166.1    2.04   0.13        0.4565
+
+Table 1B: scaling, stride=16 (128 B)
+  p     Tp(ms)      IQR      Sp     Ep  Karp-Flatt e
+  1     7403.1     93.8    1.00   1.00             -
+  2     4319.9     89.0    1.71   0.86        0.1671
+  4     2843.1     23.4    2.60   0.65        0.1787
+  8     2609.3    408.9    2.84   0.35        0.2600
+ 16     3539.7    266.3    2.09   0.13        0.4433
+
+VERIFY_HASH[PHASE1]: B9C31DF1351C1264 (P_log=16)
+PS C:\Users\alizh\Desktop\lab> 
